@@ -1,7 +1,12 @@
 
 In order to run this project, make sure to run "composer install" once you're in the correct directory.
 Also, you'll need to create a database (I called mine order_system), set up your .env.example file with proper database name, username, and password, and this APP_KEY: base64:P4jqRC8lzYpU8A8kV5kD/mnIim46FymUUabA0w5bHrE=   (and save that file as .env).
-Then run "php artisan migrate".
+Then run: php artisan migrate
+
+Also, to get the admin authentication to work, you will need to add an admin column to your users table like so:
+ALTER TABLE users add admin boolean;
+Then, to set an admin,
+UPDATE users set admin = 1 where id = [the id of the user you want to be an admin];
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
