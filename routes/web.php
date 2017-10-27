@@ -17,4 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/* Route::get('/home', 'HomeController@index')->name('home'); */
+
+Route::get('/home', ['middleware' => ['auth', 'admin'], function() {
+    return view('admin_home');
+}]);
+
+Route::get('/student_home', function () {
+  return view('student_home');
+});
