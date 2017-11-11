@@ -26,3 +26,8 @@ Route::get('/home', ['middleware' => ['auth', 'admin'], function() {
 Route::get('/student_home', function () {
   return view('student_home');
 });
+
+Route::get('/patients/create', ['middleware' => ['auth', 'admin'], function() {
+    return view('patients.create');
+}]);
+Route::post('/patients', 'PatientController@store');

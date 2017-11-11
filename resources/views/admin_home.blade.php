@@ -15,6 +15,10 @@
                     @endif
 
                     This is the admin page!
+                  </br>
+                    <a href='/Nursing_Project/order_system/public/patients/create'>Create new patient</a></br>
+                    <a href='#'>Create new order</a>
+
                 </div>
             </div>
         </div>

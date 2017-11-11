@@ -79,9 +79,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome to Hell </br>
-                    Lol JK    </br>
-                    It's just Laravel
+                    Welcome to the</br>
+                    Nursing Simulation App
+                    
                 </div>
 
             </div>
