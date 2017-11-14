@@ -79,10 +79,19 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome to the</br>
-                    Nursing Simulation App
-                    
+                    Nursing Simulation </br>
+
+                  <img src="pictures/AU.jpg">
+
+
                 </div>
+                <div class="links">
+                <a href="https://aumail.aurora.edu">Zimbra</a>
+                 <a href="https://wa3.aurora.edu/WebAdvisor/WebAdvisor?TYPE=M&PID=CORE-WBMAIN&TOKENIDX=4685853854">WebAdvisor</a>
+                 <a href="https://moodle.aurora.edu/moodle/index.php">Moodle</a>
+                 <a href="http://news.aurora.edu">News</a>
+
+             </div>
 
             </div>
         </div>
