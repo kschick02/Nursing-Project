@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->binary('doc');
-            $table->integer('patient_id');
+            $table->integer('patient_id')->default(0);
+            $table->boolean('completed')->default(0);
 
         });
     }

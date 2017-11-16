@@ -5,7 +5,7 @@
 <div class='col-sm-6'>
 <h1> Create a New Patient </h1>
 
-<form method='POST' action='/Nursing_Project/order_system/public/patients'>
+<form method='POST' action='/patients'>
   {{ csrf_field() }}
 
   <div class = 'form-group'>

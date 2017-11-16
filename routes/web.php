@@ -31,3 +31,8 @@ Route::get('/patients/create', ['middleware' => ['auth', 'admin'], function() {
     return view('patients.create');
 }]);
 Route::post('/patients', 'PatientController@store');
+
+Route::get('/orders/create', ['middleware' => ['auth', 'admin'], function() {
+    return view('orders.create');
+}]);
+Route::post('/orders', 'OrderController@store');
