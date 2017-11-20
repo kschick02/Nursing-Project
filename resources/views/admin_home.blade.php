@@ -15,11 +15,6 @@
                     @endif
 
                     This is the admin page!
-                  </br>
-                  <a href='/patients/create'>Create new patient</a></br>
-                  <a href='/orders/create'>Create new order</a>
-                   <a href='lab/create2'>Create new lab</a>
-
                 </div>
             </div>
         </div>
