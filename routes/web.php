@@ -26,13 +26,23 @@ Route::get('/home', ['middleware' => ['auth', 'admin'], function() {
 Route::get('/student_home', function () {
   return view('student_home');
 });
-
 Route::get('/patients/create', ['middleware' => ['auth', 'admin'], function() {
     return view('patients.create');
 }]);
 Route::post('/patients', 'PatientController@store');
 
-Route::get('/orders/create', ['middleware' => ['auth', 'admin'], function() {
-    return view('orders.create');
-}]);
 Route::post('/orders', 'OrderController@store');
+
+Route::get('/patients/index', 'PatientController@index', function()
+    {
+        return view('patients.index', compact('patients'));
+    });
+
+Route::get('/patients/edit', 'PatientController@edit', function()
+    {
+        return view('patients.edit');
+    });
+
+Route::resource('patients', 'PatientController');
+
+
