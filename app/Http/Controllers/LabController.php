@@ -2,14 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Lab;
 use Illuminate\Http\Request;
 
 class LabController extends Controller
 {
-  public function store(Request $request) {
-        $name = request('name');
-        $path = $request->file('doc')->storeAs('/labs', $name . rand(1111, 9999) . '.pdf');
+            /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $labs = Lab::all();
+        return view('labs.index', compact('labs'));
+    }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('labs.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+  public function store(Request $request) {
+    $name = request('name');
+    $path = $request->file('doc')->storeAs('/labs', $name . rand(1111, 9999) . '.pdf');
 
     // create a new patient using the form data
     $lab = new \App\Lab;
@@ -17,14 +44,59 @@ class LabController extends Controller
     $lab->description = request('description');
     $lab->path = $path;
     $pat_id = request('patient_id');
-    if($pat_id != null) {
-    $lab->patient_id = $pat_id;
-    }
     // save it to the database
     $lab->save();
 
     // redirect to home page
-    return redirect('/home');
-
+    return redirect()->route('labs.index')->with('message','Lab has been added successfully');
   }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Lab $lab)
+    {
+        return view('labs.edit', compact('lab'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $lab = Lab::find($id);
+        $labUpdate = $request->all();
+        $lab->update($labUpdate);
+        return redirect()->route('labs.index')->with('message','Lab has been updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Lab $lab)
+    {
+        $lab->delete();
+        return redirect()->route('labs.index')->with('message','Lab has been deleted successfully');
+    }
 }
