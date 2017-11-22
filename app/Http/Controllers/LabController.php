@@ -12,16 +12,16 @@ class LabController extends Controller
 
 
     // create a new patient using the form data
-    $order = new \App\Lab;
-    $order->name = $name;
-    $order->description = request('description');
-    $order->path = $path;
+    $lab = new \App\Lab;
+    $lab->name = $name;
+    $lab->description = request('description');
+    $lab->path = $path;
     $pat_id = request('patient_id');
     if($pat_id != null) {
-    $order->patient_id = request('patient_id');
+    $lab->patient_id = $pat_id;
     }
     // save it to the database
-    $order->save();
+    $lab->save();
 
     // redirect to home page
     return redirect('/home');
