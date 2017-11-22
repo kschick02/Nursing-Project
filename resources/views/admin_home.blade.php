@@ -22,7 +22,7 @@
                 <h4>Orders:</h4>
                   <a href='/orders/create'>Create new order</a><br>
                   <h4>Labs:</h4>
-                   <a href='lab/create2'>Create new lab</a>
+                   <a href='labs/create'>Create new lab</a>
 
                  </div>
                 </div>

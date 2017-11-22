@@ -14,11 +14,12 @@ class CreateLabsTable extends Migration
     public function up()
     {
         Schema::create('labs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->binary('data');
-            $table->integer('patient_id');
-          
+          $table->increments('id');
+          $table->string('name');
+          $table->string('description');
+          $table->string('path');
+          $table->integer('patient_id')->default(0);
+
         });
     }
 

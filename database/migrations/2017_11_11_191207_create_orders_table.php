@@ -16,7 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->binary('doc');
+            $table->string('description');
+            $table->string('path');
             $table->integer('patient_id')->default(0);
             $table->boolean('completed')->default(0);
 

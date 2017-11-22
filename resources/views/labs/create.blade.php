@@ -3,9 +3,9 @@
 @section ('content')
 
 <div class='col-sm-6'>
-<h1> Create a New Order </h1>
+<h1> Create New Lab Results</h1>
 
-<form method='POST' action='/orders' enctype="multipart/form-data">
+<form method='POST' action='/labs' enctype="multipart/form-data">
   {{ csrf_field() }}
 
   <div class = 'form-group'>
@@ -14,7 +14,7 @@
   </div>
 
   <div class = 'form-group'>
-    <label for='doc'>Orders document: </label>
+    <label for='doc'>Lab results document: </label>
     <input type='file' id='doc' name='doc'>
     <p class='help-block'>Upload the desired pdf here</p>
   </div>
@@ -28,17 +28,6 @@
     <label for='patient_id'>Patient ID: </label>
     <input type='text' class='form-control' id='patient_id' name='patient_id'>
   </div>
-
-  <div class = 'form-group'>
-    <label for='completed'>Completed: </label>
-  <div class="checkbox">
-  <label><input type="checkbox" value=1 id='completed' name='completed'>Yes</label>
-</div>
-<div class="checkbox">
-  <label><input type="checkbox" value=0  id='completed' name='completed'>No</label>
-</div>
-</div>
-
 
 
   <button type='submit' class='btn btn-primary'>Submit</button>

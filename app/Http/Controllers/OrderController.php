@@ -7,16 +7,15 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
   public function store(Request $request) {
-
-        $file = $request->file('doc');
-        $path = $file->getRealPath();
-        $files = file_get_contents($path);
+        $name = request('name');
+        $path = $request->file('doc')->storeAs('/orders', $name . rand(1111, 9999) . '.pdf');
 
 
     // create a new patient using the form data
     $order = new \App\Order;
-    $order->name = request('name');
-    $order->doc = $files;
+    $order->name = $name;
+    $order->description = request('description');
+    $order->path = $path;
     $pat_id = request('patient_id');
     if($pat_id != null) {
     $order->patient_id = request('patient_id');
