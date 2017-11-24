@@ -2,14 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-  public function store(Request $request) {
-        $name = request('name');
-        $path = $request->file('doc')->storeAs('/orders', $name . rand(1111, 9999) . '.pdf');
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $orders = Order::all();
+        return view('orders.index', compact('orders'));
+    }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('orders.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+  public function store(Request $request) {
+    $name = request('name');
+    $path = $request->file('doc')->storeAs('/orders', $name . rand(1111, 9999) . '.pdf');
 
     // create a new patient using the form data
     $order = new \App\Order;
@@ -26,7 +53,55 @@ class OrderController extends Controller
     $order->save();
 
     // redirect to home page
-    return redirect('/');
-
+    return redirect()->route('orders.index')->with('message','Order has been added successfully');
   }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Order $order)
+    {
+        return view('orders.edit', compact('order'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $orderUpdate = $request->all();
+        $order->update($orderUpdate);
+        return redirect()->route('orders.index')->with('message','Order has been updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return redirect()->route('orders.index')->with('message','Order has been deleted successfully');
+    }
 }

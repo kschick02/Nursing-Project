@@ -20,8 +20,10 @@
                   <a href='/patients/create'>Create new patient</a><br>
                 </div>
                 <h4>Orders:</h4>
+                  <a href='/orders/index'>View all orders</a><br>
                   <a href='/orders/create'>Create new order</a><br>
                   <h4>Labs:</h4>
+                   <a href='/labs/index'>View all labs</a><br>
                    <a href='labs/create'>Create new lab</a>
 
                  </div>

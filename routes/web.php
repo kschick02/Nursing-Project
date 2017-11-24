@@ -26,16 +26,28 @@ Route::get('/home', ['middleware' => ['auth', 'admin'], function() {
 Route::get('/student_home', function () {
   return view('student_home');
 });
-
 Route::get('/patients/create', ['middleware' => ['auth', 'admin'], function() {
     return view('patients.create');
 }]);
 Route::post('/patients', 'PatientController@store');
 
+Route::post('/orders', 'OrderController@store');
+
 Route::get('/patients/index', 'PatientController@index', function()
     {
         return view('patients.index', compact('patients'));
     });
+
+Route::get('/orders/index', 'OrderController@index', function()
+    {
+        return view('orders.index', compact('orders'));
+     });
+
+Route::get('/labs/index', 'LabController@index', function()
+    {
+        return view('labs.index', compact('labs'));
+     });
+
 Route::get('/patients/edit', 'PatientController@edit', function()
     {
         return view('patients.edit');
@@ -43,15 +55,8 @@ Route::get('/patients/edit', 'PatientController@edit', function()
 
 Route::resource('patients', 'PatientController');
 
-Route::get('/orders/create', ['middleware' => ['auth', 'admin'], function() {
-    return view('orders.create');
-}]);
-Route::post('/orders', 'OrderController@store');
+Route::resource('orders', 'OrderController');
 
-Route::get('/orders/show', function() {
-  return view('orders.show');
-});
-Route::get('/labs/create', ['middleware' => ['auth', 'admin'], function() {
-    return view('labs.create');
-}]);
-Route::post('/labs', 'LabController@store');
+Route::resource('labs', 'LabController');
+
+
