@@ -36,13 +36,14 @@ class OrderController extends Controller
      */
   public function store(Request $request) {
     $name = request('name');
-    $path = $request->file('doc')->storeAs('/orders', $name . rand(1111, 9999) . '.pdf');
+    $pathInStorage = 'orders/' . $name . rand(1111, 9999) . '.pdf';
+    $request->file('doc')->storeAs('/public', $pathInStorage);
 
     // create a new patient using the form data
     $order = new \App\Order;
     $order->name = $name;
     $order->description = request('description');
-    $order->path = $path;
+    $order->path = $pathInStorage;
     $pat_id = request('patient_id');
     if($pat_id != null) {
     $order->patient_id = request('patient_id');

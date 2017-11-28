@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<style> 
+<style>
 table {border: solid 1px lightgrey;}
-td {border-right: solid 1px lightgrey; 
+td {border-right: solid 1px lightgrey;
    border-left: solid 1px lightgrey;}
 </style>
 <div class="container">
@@ -38,6 +38,8 @@ td {border-right: solid 1px lightgrey;
                             {!! Form::open(array('route'=>['labs.destroy',$lab->id], 'method'=>'DELETE')) !!}
                                 {!! link_to_route ('labs.edit', 'Edit', [$lab->id], ['class'=>'btn btn-primary']) !!}
                             |
+                              <a href= "../storage/{{$lab-> path}}"  class="btn btn-info" role="button">View Lab Results</a>
+                              |
                                 {!! Form::button ('Delete',['type'=>'submit','class'=>'btn btn-danger']) !!}
                             {!! Form::close() !!}
                         </div>
