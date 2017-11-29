@@ -36,13 +36,14 @@ class LabController extends Controller
      */
   public function store(Request $request) {
     $name = request('name');
-    $path = $request->file('doc')->storeAs('/labs', $name . rand(1111, 9999) . '.pdf');
+    $pathInStorage = 'labs/' . $name . rand(1111, 9999) . '.pdf';
+    $path = $request->file('doc')->storeAs('/public', $pathInStorage);
 
     // create a new patient using the form data
     $lab = new \App\Lab;
     $lab->name = $name;
     $lab->description = request('description');
-    $lab->path = $path;
+    $lab->path = $pathInStorage;
     $pat_id = request('patient_id');
     // save it to the database
     $lab->save();
