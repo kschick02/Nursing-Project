@@ -94,6 +94,14 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('message','Order has been updated successfully');
     }
 
+    public function complete(Request $request)
+    {
+        $id = $request->order_id;
+        Order::where('id', $id)
+         ->update(['completed' => 1]);
+        return back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
