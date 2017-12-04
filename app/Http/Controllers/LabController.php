@@ -44,7 +44,7 @@ class LabController extends Controller
     $lab->name = $name;
     $lab->description = request('description');
     $lab->path = $pathInStorage;
-    $pat_id = request('patient_id');
+    $lab->patient_id = request('patient_id');
     // save it to the database
     $lab->save();
 
