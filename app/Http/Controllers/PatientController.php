@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use App\Lab;
+use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
 {
@@ -36,7 +39,7 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        
+
       // create a new patient using the form data
       $patient = new \App\Patient;
       $patient->MRN = request('MRN');
@@ -67,7 +70,12 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return view('patients.show', compact('patient'));
+
+      $labs = Lab::where('patient_id', $patient->id)->get();
+      $orders = Order::where('patient_id', $patient->id)->where('completed', 1)->get();
+      $pendings = Order::where('patient_id', $patient->id)->where('completed', 0)->get();
+
+      return view('patients.show', compact('patient', 'labs', 'orders', 'pendings'));
     }
 
     /**
