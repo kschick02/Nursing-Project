@@ -11,7 +11,7 @@ td {border-right: solid 1px lightgrey;
     <div class="row">
         <div class="col-md-10 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Patient List:</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -20,13 +20,14 @@ td {border-right: solid 1px lightgrey;
                         </div>
                     @endif
 
-                    This is the student page!
+
                  <table class="table">
                         <tr>
                             <th></th>
                             <th>MRN</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th> DOB </th>
                             <th>Sex</th>
                             <th>Code Status</th>
                         </tr>
@@ -43,6 +44,7 @@ td {border-right: solid 1px lightgrey;
                         <td>{{$patient-> MRN}}</td>
                         <td>{{$patient-> fname}}</td>
                         <td>{{$patient-> lname}}</td>
+                        <td>{{$patient->DOB}}</td>
                         <td>{{$patient-> sex}}</td>
                         <td>{{$patient-> code_status}}</td>
                     @endforeach

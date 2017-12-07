@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class LabController extends Controller
 {
@@ -97,6 +98,8 @@ class LabController extends Controller
      */
     public function destroy(Lab $lab)
     {
+        $labFile = $lab->path;
+        File::delete('storage/' . $labFile);
         $lab->delete();
         return redirect()->route('labs.index')->with('message','Lab has been deleted successfully');
     }

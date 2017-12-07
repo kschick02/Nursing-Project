@@ -31,7 +31,7 @@
 
                   <div class="form-group">
                     {!! Form::label('sex', 'Edit Sex') !!} <br>
-                    {!! Form::select('sex', ['Male', 'Female', 'Other']) !!}
+                    {!! Form::text('sex', null, ['class'=>'form-control']) !!}
                   </div>
 
                   <div class="form-group">

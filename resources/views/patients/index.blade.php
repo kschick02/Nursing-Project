@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<style> 
+<style>
 table {border: solid 1px lightgrey;}
-td {border-right: solid 1px lightgrey; 
+td {border-right: solid 1px lightgrey;
    border-left: solid 1px lightgrey;}
 </style>
 <div class="container">
@@ -53,7 +53,7 @@ td {border-right: solid 1px lightgrey;
                             <div style="display:inline-block";>
                             {!! Form::open(array('route'=>['patients.destroy',$patient->id], 'method'=>'DELETE')) !!}
                                 {!! link_to_route ('patients.edit', 'Edit', [$patient->id], ['class'=>'btn btn-primary']) !!}
-                            |
+                          
                                 {!! Form::button ('Delete',['type'=>'submit','class'=>'btn btn-danger']) !!}
                             {!! Form::close() !!}
                         </div>

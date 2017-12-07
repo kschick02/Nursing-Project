@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class OrderController extends Controller
 {
@@ -110,6 +111,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+        $orderFile = $order->path;
+        File::delete('storage/' . $orderFile);
         $order->delete();
         return redirect()->route('orders.index')->with('message','Order has been deleted successfully');
     }

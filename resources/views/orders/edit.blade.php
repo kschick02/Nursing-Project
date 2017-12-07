@@ -13,7 +13,7 @@
                     {!! Form::label('name', 'Edit Name') !!}
                     {!! Form::text('name', null, ['class'=>'form-control']) !!}
                   </div>
-                  
+
                   <div class="form-group">
                     {!! Form::label('description', 'Edit Description') !!}
                     {!! Form::text('description', null, ['class'=>'form-control']) !!}
@@ -22,6 +22,11 @@
                   <div class="form-group">
                     {!! Form::label('patient_id', 'Edit Patient ID') !!}
                     {!! Form::number('patient_id', null, ['class'=>'form-control']) !!}
+                  </div>
+
+                  <div class="form-group">
+                    {!! Form::label('completed', 'Completed') !!} <br>
+                    {!! Form::select('completed', ['No', 'Yes']) !!}
                   </div>
 
                   <div class="form-group">
